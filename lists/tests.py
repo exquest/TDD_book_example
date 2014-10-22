@@ -3,6 +3,7 @@ from django.test import TestCase
 from lists.views import home_page
 from django.http import HttpRequest
 from django.template.loader import render_to_string
+from lists.models import Item
 
 class ItemModelTest(TestCase):
 	
@@ -15,7 +16,7 @@ class ItemModelTest(TestCase):
 		second_item.text = 'Item the second'
 		second_item.save()
 		
-		saved_items = Objects.items.all()
+		saved_items = Item.objects.all()
 		self.assertEqual(saved_items.count(), 2)
 		
 		first_saved_item = saved_items[0]
